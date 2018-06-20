@@ -1,11 +1,18 @@
 var studentsForm;
 
-function init(){
-    loadStudents()
-        .then(renderStudents(students));
+function init() {
+    // let students = loadStudents();
+    // loadStudents()
+    //     .then(renderStudents(students));
 
-    studentForm = document.getElementById('student-form');
-    studentForm.addEventListener('submit', (e) => {
+    renderStudents([{
+        "id": 1,
+        "name": "Maria",
+        "grade": "100"
+    }]);
+
+    studentsForm = document.getElementById('students-form');
+    studentsForm.addEventListener('submit', (e) => {
         e.preventDefault();
         createStudent()
             .then(loadStudents)
@@ -17,17 +24,17 @@ window.onload = init;
 
 const studentUrl = 'http://localhost:3000/students';
 
-function loadStudents(){
+function loadStudents() {
     return fetch(studentUrl)
         .then(r => r.json());
 }
 
 function createStudent() {
-    let title = studentForm.title.value;
-    let grade = studentForm.grade.title;
+    let name = studentForm.name.value;
+    let grade = studentForm.grade.value;
     return fetch(studentUrl, {
-        method:'POST',
-        body: JSON.stringify({title}, {grade}),
+        method: 'POST',
+        body: JSON.stringify({name}, {grade}),
         headers: {
             'Content-Type': 'application/json'
         }
@@ -35,7 +42,7 @@ function createStudent() {
 }
 
 function renderStudents(students) {
-    let template = document.getElementById('student-template');
+    let template = document.getElementById('students-template');
     let studentElement = template.content.querySelector('.student');
     let studentsList = document.getElementById('students');
     studentsList.innerHTML = '';
@@ -48,5 +55,6 @@ function renderStudents(students) {
 }
 
 function updateStudentElement(element, student) {
-    element.querySelector('h1').innerText = student.title;
+    element.querySelector('h3').innerText = student.name;
+    element.querySelector('h4').innerText = student.grade;
 }
