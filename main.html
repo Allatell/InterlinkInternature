@@ -7,6 +7,7 @@
     <script src="main.js"></script>
 </head>
 <body>
+
     <template>
         <div id="students-template">
             <div class="student">
@@ -15,6 +16,17 @@
             </div>
         </div>
     </template>
-    <div id="posts"></div>
+
+    <div id="students"></div>
+
+    <form id="student-form">
+        <h1>Новая запись</h1>
+        <label for="title">Имя</label>
+        <input type="text" id="title">
+        <label for="grade">Оценка</label>
+        <input type="text" id="grade">
+        <button type="submit">Добавить студента</button>
+    </form>
+
 </body>
 </html>

@@ -1,16 +1,37 @@
+var studentsForm;
+
 function init(){
     loadStudents()
-        .then(renderStudents());
+        .then(renderStudents(students));
 
+    studentForm = document.getElementById('student-form');
+    studentForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        createStudent()
+            .then(loadStudents)
+            .load(renderStudents);
+    });
 }
 
 window.onload = init;
 
-const postUrl = '';
+const studentUrl = 'http://localhost:3000/students';
 
 function loadStudents(){
-    return fetch(postsUrl)
+    return fetch(studentUrl)
         .then(r => r.json());
+}
+
+function createStudent() {
+    let title = studentForm.title.value;
+    let grade = studentForm.grade.title;
+    return fetch(studentUrl, {
+        method:'POST',
+        body: JSON.stringify({title}, {grade}),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
 }
 
 function renderStudents(students) {
