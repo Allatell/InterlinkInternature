@@ -1,22 +1,15 @@
 var studentsForm;
 
 function init() {
-    // let students = loadStudents();
-    // loadStudents()
-    //     .then(renderStudents(students));
-
-    renderStudents([{
-        "id": 1,
-        "name": "Maria",
-        "grade": "100"
-    }]);
+    loadStudents()
+        .then(renderStudents);
 
     studentsForm = document.getElementById('students-form');
     studentsForm.addEventListener('submit', (e) => {
         e.preventDefault();
         createStudent()
             .then(loadStudents)
-            .load(renderStudents);
+            .then(renderStudents);
     });
 }
 
@@ -30,8 +23,8 @@ function loadStudents() {
 }
 
 function createStudent() {
-    let name = studentForm.name.value;
-    let grade = studentForm.grade.value;
+    let name = studentsForm.name.value;
+    let grade = studentsForm.grade.value;
     return fetch(studentUrl, {
         method: 'POST',
         body: JSON.stringify({name}, {grade}),
