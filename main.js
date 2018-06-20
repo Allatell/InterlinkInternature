@@ -27,7 +27,7 @@ function createStudent() {
     let grade = studentsForm.grade.value;
     return fetch(studentUrl, {
         method: 'POST',
-        body: JSON.stringify({name}, {grade}),
+        body: JSON.stringify({name, grade}),
         headers: {
             'Content-Type': 'application/json'
         }
