@@ -1,0 +1,23 @@
+{
+  "name": "interlinkinternature",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "json-server": "^0.14.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Allatell/InterlinkInternature.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Allatell/InterlinkInternature/issues"
+  },
+  "homepage": "https://github.com/Allatell/InterlinkInternature#readme"
+}
